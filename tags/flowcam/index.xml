@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Visible Ocean</title>
-    <link>https://sarigiering.github.io/</link>
-    <description>Recent content on Visible Ocean</description>
+    <title>FlowCam on Visible Ocean</title>
+    <link>https://sarigiering.github.io/tags/flowcam/</link>
+    <description>Recent content in FlowCam on Visible Ocean</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
     <lastBuildDate>Mon, 09 Sep 2019 11:20:08 -0230</lastBuildDate>
     
-	<atom:link href="https://sarigiering.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sarigiering.github.io/tags/flowcam/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>About</title>
-      <link>https://sarigiering.github.io/about/</link>
-      <pubDate>Sat, 03 Mar 2018 13:50:49 +0100</pubDate>
-      
-      <guid>https://sarigiering.github.io/about/</guid>
-      <description> Things take longer to happen then you think they will, and then they happen much faster than you thought they could. Rudi Dornbusch
- </description>
-    </item>
     
     <item>
       <title>Extract Individual Particle Images From FlowCam</title>

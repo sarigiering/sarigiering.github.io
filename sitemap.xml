@@ -3,15 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sarigiering.github.io/categories/</loc>
+    <loc>https://sarigiering.github.io/about/</loc>
+    <lastmod>2018-03-03T13:50:49+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/posts/extract-individual-particle-images-from-flowcam/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/tags/extraction/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/tags/flowcam/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/tags/particles/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/posts/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
   </url>
   
   <url>
     <loc>https://sarigiering.github.io/tags/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/tags/vignette/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
   </url>
   
   <url>
     <loc>https://sarigiering.github.io/</loc>
+    <lastmod>2019-09-09T11:20:08-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/posts/how-many-particles-computing-normalized-particle-size-spectra/</loc>
+    <lastmod>2019-08-22T13:55:12-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/tags/size-spectrum/</loc>
+    <lastmod>2019-08-22T13:55:12-02:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sarigiering.github.io/categories/</loc>
   </url>
   
 </urlset>
