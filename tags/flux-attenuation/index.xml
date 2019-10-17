@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flux attenuation on Visible Ocean</title>
+    <link>/tags/flux-attenuation/</link>
+    <description>Recent content in flux attenuation on Visible Ocean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
+    <lastBuildDate>Tue, 24 Sep 2019 15:42:28 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/flux-attenuation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Martins&#39;b and the fickle export depth</title>
+      <link>/posts/martins_b_and_the_fickle_export_depth/</link>
+      <pubDate>Tue, 24 Sep 2019 15:42:28 +0100</pubDate>
+      
+      <guid>/posts/martins_b_and_the_fickle_export_depth/</guid>
+      <description>Let&amp;rsquo;s start by talking about export in the biological carbon pump (BCP). The term &amp;lsquo;export&amp;rsquo; is often confused in the literature, and even those who are familiar with its definition may disagree and start heated debates about it.</description>
+    </item>
+    
+  </channel>
+</rss>

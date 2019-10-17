@@ -1,0 +1,15 @@
+---
+title: Overview of Marine Snow Catcher deployments
+author: Sari Giering
+date: '2019-10-16'
+slug: overview-of-marine-snow-catcher-deployments
+categories: []
+tags: []
+draft: yes
+---
+
+This is just some test text.
+
+```{R}
+plot(1:10, col=1:10, pch=16)
+```

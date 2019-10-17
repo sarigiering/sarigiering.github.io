@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Visible Ocean</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Visible Ocean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
+    <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Overview of Marine Snow Catcher deployments</title>
+      <link>/post/overview-of-marine-snow-catcher-deployments/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/overview-of-marine-snow-catcher-deployments/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
