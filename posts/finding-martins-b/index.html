@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
-  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="https://sarigiering.github.io/css/styles.css" />
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -33,7 +33,7 @@ if (!doNotTrack) {
   <div id="container">
     <header>
       <h1>
-                <a href="/">Visible Ocean</a>
+                <a href="https://sarigiering.github.io/">Visible Ocean</a>
             </h1>
 
       <ul id="social-media">
@@ -69,7 +69,7 @@ if (!doNotTrack) {
         </li>
         
         <li>
-            <a class="" href="/about/">
+            <a class="" href="https://sarigiering.github.io/about/">
                 <i class="fa-li fa  fa-lg"></i><span>About</span>
             </a>
         </li>
@@ -100,10 +100,10 @@ if (!doNotTrack) {
             <em>
                 
                     
-                    <a href="/tags/martin-curve/">#Martin curve</a>
+                    <a href="https://sarigiering.github.io/tags/martin-curve/">#Martin curve</a>
                 
                     , 
-                    <a href="/tags/flux-fitting/">#Flux fitting</a>
+                    <a href="https://sarigiering.github.io/tags/flux-fitting/">#Flux fitting</a>
                 
             </em>
         </li>
@@ -124,7 +124,7 @@ if (!doNotTrack) {
 <p>As part of the VERTEX study, Martin and his colleages compiled particulate organic carbon fluxes measured using neutrally buoyant sediment traps across several locations in the Pacific. The resulting vertical profile revealed a rapid decrease of flux in the upper 200-300 m. Below this depth, flux decrease appeared to be less pronounced. After trying to fit several mathematical curves to this depth profile, Martin <em>et al.</em> (1987) found that a power-law function fitted the data best. As this curve was chosen because it fitted the data best, and not because of any underlying scientific reasons, we refer to it as an ‘empirical’ fit.</p>
 <p>Surprisingly, the power-law function describes flux profiles very nicely almost everywhere in the ocean. Yet, we are still trying to understand precisely why the power-law function works so well. So, even now, our flux fitting is still empirical!</p>
 <div class="figure">
-<img src="/img/Martin_curve.jpg" alt="The infamous plot that yielded Martin’s b: A compilation of trap-derived particulate organic carbon fluxes in the Pacific suggest that the best line is Flux at depth z = 1.53(z/100)-0.858 (R2 = 0.81, n = 48)." />
+<img src="https://sarigiering.github.io/img/Martin_curve.jpg" alt="The infamous plot that yielded Martin’s b: A compilation of trap-derived particulate organic carbon fluxes in the Pacific suggest that the best line is Flux at depth z = 1.53(z/100)-0.858 (R2 = 0.81, n = 48)." />
 <p class="caption">The infamous plot that yielded Martin’s b: A compilation of trap-derived particulate organic carbon fluxes in the Pacific suggest that the best line is Flux at depth <em>z</em> = 1.53(<em>z</em>/100)<sup>-0.858</sup> (R<sup>2</sup> = 0.81, n = 48).</p>
 </div>
 <p>We refer to the exponent in the power-law function as <em>b</em>. In the original curve, <em>b</em> = 0.86, and this value is often used in models. Watch out when people talk about ‘Martin’s <em>b</em>’ and ‘the <em>b</em>-value’: Some are referrring to the exact value (i.e. <em>b</em> = 0.86) or a curve fitted with this value, whereas others are referring to a general power-law fit on vertical flux profiles (so <em>b</em> could be anything). Also, as flux profiles generally decrease with depth (though checkout Giering <em>et al. 2016</em>), negative and positive <em>b</em> values are used interchangeably, i.e. -0.86 and 0.86 refer to the same flux profile.</p>
@@ -150,7 +150,7 @@ if (!doNotTrack) {
       # add x-axis
       axis(2, pos=0)
       mtext(expression(paste(&quot;POC (mg C &quot;, m^-2 ,&quot; &quot;, d^-1 ,&quot;)&quot;,sep=&quot;&quot;)), side=3, line= 2, cex=1.2)</code></pre>
-<p><img src="/posts/martin_b_files/figure-html/Flux-profile-1.png" width="672" /></p>
+<p><img src="https://sarigiering.github.io/posts/martin_b_files/figure-html/Flux-profile-1.png" width="672" /></p>
 <p>The plot shows a clear decrease of flux with increasing depth - just as we would have expected.</p>
 <p>We now plot the log-log transformed data to get our power-law fit. Note that the axes can be confusing. For the linear regression, you plot the explanatory variable (here: depth) on the x-axis and the response variable (here: flux) on the y-axis.</p>
 <p>We also need to choose our refererence depth <em>z0</em>. In my case, I used the base of the mixed layer (~50 m). Note, that the depth you choose only affects the intercept (F<sub>z0</sub>) and not the slope (<em>b</em>). The choice of reference depth is more important in terms of ecosystem interpretation.</p>
@@ -165,7 +165,7 @@ if (!doNotTrack) {
   
   # Add regression line
   abline(model, col=&quot;grey&quot;, lwd=2, lty=2)</code></pre>
-<p><img src="/posts/martin_b_files/figure-html/log-log-transformation-1.png" width="672" /></p>
+<p><img src="https://sarigiering.github.io/posts/martin_b_files/figure-html/log-log-transformation-1.png" width="672" /></p>
 <pre class="r"><code>  # Summary of linear regression
   summary(model)</code></pre>
 <pre><code>## 
@@ -218,7 +218,7 @@ if (!doNotTrack) {
     
     # Fit linear regression
     lines(F_predict, z_predict, lwd=2)  </code></pre>
-<p><img src="/posts/martin_b_files/figure-html/Flux-profile-fitted-1.png" width="672" /></p>
+<p><img src="https://sarigiering.github.io/posts/martin_b_files/figure-html/Flux-profile-fitted-1.png" width="672" /></p>
 <p>The fit does not look too bad, though it may underestimate the fluxes below 500 m depth.</p>
 </div>
 <div id="comparison-to-other-sites" class="section level2">
@@ -257,7 +257,7 @@ Important for this comparison is that you start at the same ‘input’ flux (i.
     
     # Add legend
     legend(&quot;bottomright&quot;, legend=c(&quot;PAP&quot;, &quot;Martin&quot;), col=c(1, &quot;grey&quot;), lwd=2, lty=c(1,2), bty=&quot;n&quot;)</code></pre>
-<p><img src="/posts/martin_b_files/figure-html/Flux-profile-fitted2-1.png" width="672" /></p>
+<p><img src="https://sarigiering.github.io/posts/martin_b_files/figure-html/Flux-profile-fitted2-1.png" width="672" /></p>
 <p>The plot shows that, at the PAP site (<em>b</em> = 0.70), more of the surface flux reached the lower mesopelagic than expected from the Martin curve (<em>b</em> = 0.86).</p>
 </div>
 <div id="references" class="section level2">
@@ -276,7 +276,7 @@ Important for this comparison is that you start at the same ‘input’ flux (i.
     <ul>
         
         <li>
-            <a href="/posts/overview-of-marine-snow-catcher-deployments/"><i class="fa fa-chevron-circle-left"></i> Overview of Marine Snow Catcher deployments</a>
+            <a href="https://sarigiering.github.io/posts/overview-of-marine-snow-catcher-deployments/"><i class="fa fa-chevron-circle-left"></i> Overview of Marine Snow Catcher deployments</a>
         </li>
         
         
@@ -292,10 +292,10 @@ Important for this comparison is that you start at the same ‘input’ flux (i.
     <footer>
         <h6>Copyright © 2019 - Sari Giering | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="/index.xml">Subscribe</a></h6>
+            <a href="https://sarigiering.github.ioindex.xml">Subscribe</a></h6>
     </footer>
 </div>
-<script src="/js/scripts.js"></script>
+<script src="https://sarigiering.github.io/js/scripts.js"></script>
 </body>
 
 </html>
