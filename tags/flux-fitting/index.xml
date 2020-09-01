@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flux fitting on Visible Ocean</title>
+    <link>/tags/flux-fitting/</link>
+    <description>Recent content in Flux fitting on Visible Ocean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/flux-fitting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Finding Martin&#39;s b - Fitting a Martin curve to vertical flux profiles</title>
+      <link>/posts/finding-martins-b/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/finding-martins-b/</guid>
+      <description>When we look at what sinking matter in the ocean is up to, one of the key metrics is describing the decrease of flux with depth (the ‘flux attenuation’). As particles sink, they get reworked and eaten by the animals and microbes living in the deep ocean.</description>
+    </item>
+    
+  </channel>
+</rss>

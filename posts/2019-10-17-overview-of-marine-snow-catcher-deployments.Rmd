@@ -6,6 +6,7 @@ tags:
   - Marine Snow Catcher
 slug: overview-of-marine-snow-catcher-deployments
 draft: no
+weight: 1
 featured_image: img/overview-of-marine-snow-catcher-deployments.jpg
 ---
 

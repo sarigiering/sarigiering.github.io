@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
   <meta name="author" content="Sari Giering" />
-  <meta name="generator" content="Hugo 0.57.2" />
+  <meta name="generator" content="Hugo 0.66.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -117,57 +117,43 @@ if (!doNotTrack) {
 </aside>
     
 
-    
-
-<p>Using size spectra to describe the ocean ecosystem is the new craze, particularly as <em>in situ</em> imaging devices are becoming cheaper and more capable. The theory behind it is simple: Small particles, such as bacteria and phytoplankton, are numerous, while large particles, such as whales, are sparse. As a consequence, the summed biomass of small organisms far outweighs the summed biomass of large organisms. We refer to this trend as the size spectrum, and it has a negative slope.</p>
-
+    <p>Using size spectra to describe the ocean ecosystem is the new craze, particularly as <em>in situ</em> imaging devices are becoming cheaper and more capable. The theory behind it is simple: Small particles, such as bacteria and phytoplankton, are numerous, while large particles, such as whales, are sparse. As a consequence, the summed biomass of small organisms far outweighs the summed biomass of large organisms. We refer to this trend as the size spectrum, and it has a negative slope.</p>
 <p>The interpretation of the slope (and deviations from its linear nature) have been used to infer food-web structure, predation, population growth, and more. Using a simple mathematical approach (e.g. a linear regression between binned biomass and particle size) is convenient as it saves the observational biologist a lot of time in front of the microscope, and modellers can happily and easily apply allometric equations to the data.</p>
-
 <p>Life is obviously not that simple. But let&rsquo;s for one moment believe it is.</p>
-
 <h2 id="just-how-many-particles-do-i-need-to-count">Just how many particles do I need to count?</h2>
-
 <p>Let&rsquo;s get to the practical question. When it comes to analyzing a sample with the aim to calculate a normalized particle size spectrum, it is important that you count sufficient particles in each bin to calculate the slope with certainty. If there are insufficient particles in the bins, the size spectrum becomes &lsquo;unstable&rsquo; and an outlier can have a dramatic effect on the data interpretation.</p>
-
 <p>Fortunately, you can decide on a rough number of particles before you start.</p>
-
 <p>For the <strong>normalized abundance spectrum</strong> that we will calculate, we found that</p>
-
 <ul>
 <li>a good starting point is <strong>10-20 particles</strong> in your largest bin.</li>
 <li>you want <strong>at least 4 solid bins</strong> (i.e. bin containing &gt;10 particles).</li>
 <li>we like the octave scale (using <strong>log2</strong>) (I&rsquo;ll post about different log-scales another time).</li>
 </ul>
-
 <h2 id="calculate-minimum-number-of-particles-needed-for-size-spectra">Calculate minimum number of particles needed for size spectra</h2>
-
 <p>First I build a data frame that contains the basic information for composing a size spectra:</p>
-
 <ul>
 <li><em>L</em> = lower limit of size for each bin</li>
 <li><em>w</em> = log2 of lower size bin</li>
-<li>&Delta;<em>w</em> =  width of size bin (in &mu;m)</li>
-<li>w&#772; = mean of size bin<sup>[1]</sup></li>
+<li>Δ<em>w</em> =  width of size bin (in μm)</li>
+<li>w̄ = mean of size bin<!-- raw HTML omitted -->[1]<!-- raw HTML omitted --></li>
 </ul>
-
 <p>Now let&rsquo;s write this in R.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">dat   <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">data.frame</span>(<span style="color:#e6db74">&#34;L&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#66d9ef">c</span>(<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">12</span>))
-dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">log2</span>(dat<span style="color:#f92672">$</span>L)
-<span style="color:#66d9ef">for</span>(i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#66d9ef">nrow</span>(dat)) dat<span style="color:#f92672">$</span>w_avg[i] <span style="color:#f92672">&lt;-</span> (dat<span style="color:#f92672">$</span>w[i]<span style="color:#f92672">+</span>dat<span style="color:#f92672">$</span>w[i<span style="color:#ae81ff">+1</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
-<span style="color:#66d9ef">for</span>(i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#66d9ef">nrow</span>(dat)) dat<span style="color:#f92672">$</span>dw[i]    <span style="color:#f92672">&lt;-</span> dat<span style="color:#f92672">$</span>w[i<span style="color:#ae81ff">+1</span>]<span style="color:#f92672">-</span>dat<span style="color:#f92672">$</span>w[i]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">dat   <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#e6db74">&#34;L&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#a6e22e">^c</span>(<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">12</span>))
+dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">log2</span>(dat<span style="color:#f92672">$</span>L)
+<span style="color:#a6e22e">for</span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(dat)) dat<span style="color:#f92672">$</span>w_avg[i] <span style="color:#f92672">&lt;-</span> (dat<span style="color:#f92672">$</span>w[i]<span style="color:#f92672">+</span>dat<span style="color:#f92672">$</span>w[i<span style="color:#ae81ff">+1</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+<span style="color:#a6e22e">for</span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(dat)) dat<span style="color:#f92672">$</span>dw[i]    <span style="color:#f92672">&lt;-</span> dat<span style="color:#f92672">$</span>w[i<span style="color:#ae81ff">+1</span>]<span style="color:#f92672">-</span>dat<span style="color:#f92672">$</span>w[i]
 
-<span style="color:#66d9ef">print</span>(dat)</code></pre></div>
-<table>
+<span style="color:#a6e22e">print</span>(dat)
+</code></pre></div><table>
 <thead>
 <tr>
 <th align="center">bin</th>
-<th align="center">minimum length (<em>L</em> in &mu;m)</th>
-<th align="center">w (log<sub>2</sub> of <em>L</em>)</th>
-<th align="center">bin mean (w&#772;)</th>
-<th align="center">bin width (&Delta;<em>w</em>)</th>
+<th align="center">minimum length (<em>L</em> in μm)</th>
+<th align="center">w (log<!-- raw HTML omitted -->2<!-- raw HTML omitted --> of <em>L</em>)</th>
+<th align="center">bin mean (w̄)</th>
+<th align="center">bin width (Δ<em>w</em>)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="center">1</td>
@@ -176,7 +162,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">0.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">2</td>
 <td align="center">2</td>
@@ -184,7 +169,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">1.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">3</td>
 <td align="center">4</td>
@@ -192,7 +176,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">2.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">4</td>
 <td align="center">8</td>
@@ -200,7 +183,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">3.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">5</td>
 <td align="center">16</td>
@@ -208,7 +190,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">4.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">6</td>
 <td align="center">32</td>
@@ -216,7 +197,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">5.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">7</td>
 <td align="center">64</td>
@@ -224,7 +204,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">6.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">8</td>
 <td align="center">128</td>
@@ -232,7 +211,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">7.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">9</td>
 <td align="center">256</td>
@@ -240,7 +218,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">8.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">10</td>
 <td align="center">512</td>
@@ -248,7 +225,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">9.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">11</td>
 <td align="center">1024</td>
@@ -256,7 +232,6 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">10.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">12</td>
 <td align="center">2048</td>
@@ -264,85 +239,58 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <td align="center">11.5</td>
 <td align="center">1</td>
 </tr>
-
 <tr>
 <td align="center">13</td>
 <td align="center">4096</td>
 <td align="center">12</td>
 <td align="center"></td>
-<td align="center"></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-
 <p>I then calculate the intercept <em>a</em> for a superspectrum (Blanco <em>et al.</em> 1994), where the number of particles (<em>n</em>) in our largest size bin is 20.</p>
-
-<p><img src="https://drive.google.com/uc?id=1VaYNniMcEc5kbNguFlDlLbl-DI6Uy1PF" alt="alt text" /></p>
-
+<p><img src="https://drive.google.com/uc?id=1VaYNniMcEc5kbNguFlDlLbl-DI6Uy1PF" alt="alt text"></p>
 <p>When looking at this graph, beware of the following two things:</p>
-
 <ol>
 <li>Blanco <em>et al.</em> (1994) use &ldquo;N&rdquo; for &ldquo;number of observations&rdquo;. This annotation confuses me. For my codes, I therefore use <em>n</em> rather than <em>N</em>.</li>
-<li>The x-axis shows our parameter w&#772;</li>
+<li>The x-axis shows our parameter w̄</li>
 </ol>
-
 <p>As this is a really nice linear regression, we get a simple linear equation:</p>
-
-<p>log(<em>n</em>/&Delta;V) = <em>a</em>+<em>b</em>*log(V)</p>
-
+<p>log(<em>n</em>/ΔV) = <em>a_+_b</em>*log(V)</p>
 <p>As I am using the width (equivalent spherical diameter) here instead of volume (<em>V</em>), my equation looks like this:</p>
-
-<p>log(<em>n</em>/&Delta;<em>w</em>) = <em>a</em>+<em>b</em>*w&#772;</p>
-
-<hr />
-
+<p>log(<em>n</em>/Δ<em>w</em>) = <em>a_+_b</em>*w̄</p>
+<hr>
 <h3 id="caution-normalized-vs-standard-number-size-spectrum">Caution: Normalized vs. standard number size spectrum</h3>
-
 <p>We now want to calculate the number of particles in a certain size bin. So what we really need here is the &lsquo;number size spectrum&rsquo;, which is not normalized to the width of the size bin. To &lsquo;denormalize&rsquo;, we multiply by the bin width scaled to the mean bin size:</p>
-
-<p>log(<em>n</em>) = <em>a</em> + <em>b</em>*w&#772; + &Delta;<em>w</em>*w&#772;</p>
-
-<p>log(<em>n</em>) = <em>a</em> + (<em>b</em>+&Delta;<em>w</em>)*w&#772;</p>
-
-<p>This equation is pretty cool as it shows how the slope of the normalized size spectra (<em>b<sub>norm</sub></em>) and &lsquo;standard&rsquo; size spectra (<em>b<sub>standard</sub></em>) relate to each other:</p>
-
-<p><em>b<sub>norm</sub></em> = <em>b</em></p>
-
-<p><em>b<sub>standard</sub></em> = (<em>b</em>+&Delta;<em>w</em>)</p>
-
-<p>And as we have set up our &Delta;<em>w</em> to be 1, we get:</p>
-
-<p>(<em>b<sub>norm</sub></em>) = (<em>b<sub>standard</sub></em>)+1.</p>
-
+<p>log(<em>n</em>) = <em>a</em> + <em>b</em>*w̄ + Δ<em>w</em>*w̄</p>
+<p>log(<em>n</em>) = <em>a</em> + (_b_+Δ<em>w</em>)*w̄</p>
+<p>This equation is pretty cool as it shows how the slope of the normalized size spectra (<em>b<!-- raw HTML omitted -->norm<!-- raw HTML omitted --></em>) and &lsquo;standard&rsquo; size spectra (<em>b<!-- raw HTML omitted -->standard<!-- raw HTML omitted --></em>) relate to each other:</p>
+<p><em>b<!-- raw HTML omitted -->norm<!-- raw HTML omitted --></em> = <em>b</em></p>
+<p><em>b<!-- raw HTML omitted -->standard<!-- raw HTML omitted --></em> = (_b_+Δ<em>w</em>)</p>
+<p>And as we have set up our Δ<em>w</em> to be 1, we get:</p>
+<p>(<em>b<!-- raw HTML omitted -->norm<!-- raw HTML omitted --></em>) = (<em>b<!-- raw HTML omitted -->standard<!-- raw HTML omitted --></em>)+1.</p>
 <p>Sweet!</p>
-
-<hr />
-
-<p>Now that we have that sorted, we can almost start calculating numbers. I use the slope of Blanco <em>et al</em>&rsquo;s (1994) normalized superspectrum and assume that a size bin is well represented if there are 20 particles in it.</p>
-
+<hr>
+<p>Now that we have that sorted, we can almost start calculating numbers. I use the slope of Blanco <em>et al</em>&lsquo;s (1994) normalized superspectrum and assume that a size bin is well represented if there are 20 particles in it.</p>
 <p>So we assume:</p>
-
 <ul>
 <li><em>b</em> = -2</li>
 <li><em>n</em> = 20</li>
 </ul>
-
 <p>The last parameter that we need is the intercept. We can calculate it by rearranging the equations as:</p>
-
-<p><em>a</em> = log(<em>n</em>) - (b+&Delta;<em>w</em>)*w&#772;</p>
-
-<p><em>a</em> = log(20) - (-2+1)*w&#772;</p>
+<p><em>a</em> = log(<em>n</em>) - (b+Δ<em>w</em>)*w̄</p>
+<p><em>a</em> = log(20) - (-2+1)*w̄</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">b <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">-2</span>
 n <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">20</span>
 
-dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">log2</span>(n) <span style="color:#f92672">-</span> (b<span style="color:#f92672">+</span>dat<span style="color:#f92672">$</span>dw)<span style="color:#f92672">*</span>dat<span style="color:#f92672">$</span>w_avg</code></pre></div>
-<p>Now that I know the intercept, I can compose a number size spectrum with varying population sizes. In the following table, you see a column for each of these spectra. For example, the column <em>n_w=0</em> shows a number size spectrum where the number of particles in the size bin starting at log<sub>2</sub>(<em>L</em>)=0 has 10 particles.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#66d9ef">for</span>(i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>(<span style="color:#66d9ef">nrow</span>(dat)<span style="color:#ae81ff">-1</span>)){
-  dat[,<span style="color:#66d9ef">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,dat<span style="color:#f92672">$</span>w[i],sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span>(dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>][i]<span style="color:#f92672">+</span> dat<span style="color:#f92672">$</span>w_avg<span style="color:#f92672">*</span>b <span style="color:#f92672">+</span> dat<span style="color:#f92672">$</span>dw<span style="color:#f92672">*</span>dat<span style="color:#f92672">$</span>w_avg)
+dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">log2</span>(n) <span style="color:#f92672">-</span> (b<span style="color:#f92672">+</span>dat<span style="color:#f92672">$</span>dw)<span style="color:#f92672">*</span>dat<span style="color:#f92672">$</span>w_avg
+</code></pre></div><p>Now that I know the intercept, I can compose a number size spectrum with varying population sizes. In the following table, you see a column for each of these spectra. For example, the column <em>n_w=0</em> shows a number size spectrum where the number of particles in the size bin starting at log<!-- raw HTML omitted -->2<!-- raw HTML omitted -->(<em>L</em>)=0 has 10 particles.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">for</span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>(<span style="color:#a6e22e">nrow</span>(dat)<span style="color:#ae81ff">-1</span>)){
+  dat[,<span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,dat<span style="color:#f92672">$</span>w[i],sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span><span style="color:#a6e22e">^</span>(dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>][i]<span style="color:#f92672">+</span> dat<span style="color:#f92672">$</span>w_avg<span style="color:#f92672">*</span>b <span style="color:#f92672">+</span> dat<span style="color:#f92672">$</span>dw<span style="color:#f92672">*</span>dat<span style="color:#f92672">$</span>w_avg)
   }
   
-<span style="color:#66d9ef">print</span>(<span style="color:#66d9ef">round</span>(dat))</code></pre></div>
-<pre><code>      L  w w_avg dw a_when_n=10    n_w=0 n_w=1 n_w=2 n_w=3 n_w=4 n_w=5 n_w=6 n_w=7 n_w=8 n_w=9 n_w=10 n_w=11
+<span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">round</span>(dat))
+</code></pre></div><pre><code>      L  w w_avg dw a_when_n=10    n_w=0 n_w=1 n_w=2 n_w=3 n_w=4 n_w=5 n_w=6 n_w=7 n_w=8 n_w=9 n_w=10 n_w=11
 1     1  0     0  1         4.8       20    40    80   160   320   640  1280  2560  5120 10240  20480  40960
 2     2  1     2  1         5.8       10    20    40    80   160   320   640  1280  2560  5120  10240  20480
 3     4  2     2  1         6.8        5    10    20    40    80   160   320   640  1280  2560   5120  10240
@@ -356,25 +304,19 @@ dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>] <span style="colo
 11 1024 10    10  1        14.8        0     0     0     0     0     1     1     2     5    10     20     40
 12 2048 11    12  1        15.8        0     0     0     0     0     0     1     1     2     5     10     20
 </code></pre>
-
-<p>So if you wanted to count all particles from 4 mm in diameter down to our smallest size bin here (1-2 &mu;m), you would expect to count 81,900 particles. That&rsquo;s a very high number and, most likely, your device will not be able to cover such a wide range of sizes. So how can you use this table?</p>
-
+<p>So if you wanted to count all particles from 4 mm in diameter down to our smallest size bin here (1-2 μm), you would expect to count 81,900 particles. That&rsquo;s a very high number and, most likely, your device will not be able to cover such a wide range of sizes. So how can you use this table?</p>
 <h2 id="interpret-and-apply-this-table">Interpret and apply this table</h2>
-
 <p>You can see that the particle numbers pretty quickly become high. It is unlikely that you want to or can count ten&rsquo;s of thousands of particles owing to logistical constraints (time, sample volume, <em>etc</em>). Moreover, your device will have a limited range where it can count particles with sufficient accuracy.</p>
-
 <p>In our case, we are using the FlowCam and have 4 magnifications to choose from:</p>
-
 <table>
 <thead>
 <tr>
 <th align="center">Objective</th>
-<th align="center">Min size (&mu;m)</th>
-<th align="center">Max size (&mu;m)</th>
+<th align="center">Min size (μm)</th>
+<th align="center">Max size (μm)</th>
 <th align="center">Bin range</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td align="center">20x</td>
@@ -382,21 +324,18 @@ dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>] <span style="colo
 <td align="center">50</td>
 <td align="center">1 to 5</td>
 </tr>
-
 <tr>
 <td align="center">10x</td>
 <td align="center">2</td>
 <td align="center">100</td>
 <td align="center">2 to 6</td>
 </tr>
-
 <tr>
 <td align="center">4x</td>
 <td align="center">5</td>
 <td align="center">300</td>
 <td align="center">4 to 8</td>
 </tr>
-
 <tr>
 <td align="center">2x</td>
 <td align="center">12</td>
@@ -405,18 +344,17 @@ dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>] <span style="colo
 </tr>
 </tbody>
 </table>
-
-<p>Let&rsquo;s say we want to use magnifications 20x and 4x. We want to make sure that we have a reasonably high number of particles in our largest bin. For a 20x magnification, the largest bin I can realistically capture completely ranges from 16 to 32 &mu;m. If I count 1260 particles, I can expect to find around 40 particles in this bin if the slope of the normalized number spectrum is indeed -2. If the slope was steeper, the number of particles in this bin would get smaller, nearing our lower accepted level of 10-20 particles per bin. So, 1260 particles is a good minimum number for my 20x magnification as I have a bit of &lsquo;air&rsquo; in my bin counts to accommodate for a steeper slope.</p>
+<p>Let&rsquo;s say we want to use magnifications 20x and 4x. We want to make sure that we have a reasonably high number of particles in our largest bin. For a 20x magnification, the largest bin I can realistically capture completely ranges from 16 to 32 μm. If I count 1260 particles, I can expect to find around 40 particles in this bin if the slope of the normalized number spectrum is indeed -2. If the slope was steeper, the number of particles in this bin would get smaller, nearing our lower accepted level of 10-20 particles per bin. So, 1260 particles is a good minimum number for my 20x magnification as I have a bit of &lsquo;air&rsquo; in my bin counts to accommodate for a steeper slope.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">smallest_bin <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span>
 largest_bin  <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">5</span>
-name         <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,largest_bin, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)
+name         <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,largest_bin, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)
 range        <span style="color:#f92672">&lt;-</span> smallest_bin<span style="color:#f92672">:</span>(largest_bin<span style="color:#ae81ff">+1</span>)
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;--- 20x magnification ----&#34;</span>)
-<span style="color:#66d9ef">print</span>(dat[<span style="color:#66d9ef">range</span>,<span style="color:#66d9ef">c</span>(<span style="color:#e6db74">&#34;L&#34;</span>,<span style="color:#e6db74">&#34;w&#34;</span>,name)])
+<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;--- 20x magnification ----&#34;</span>)
+<span style="color:#a6e22e">print</span>(dat[range,<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;L&#34;</span>,<span style="color:#e6db74">&#34;w&#34;</span>,name)])
 
-<span style="color:#66d9ef">print</span>(<span style="color:#66d9ef">paste</span>(<span style="color:#e6db74">&#34;Total:&#34;</span>, <span style="color:#66d9ef">round</span>(<span style="color:#66d9ef">sum</span>(dat[<span style="color:#66d9ef">range</span>,<span style="color:#66d9ef">c</span>(name)], na.rm<span style="color:#f92672">=</span>T))))</code></pre></div>
-<pre><code>[1] &quot;--- 20x magnification ----&quot;
+<span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;Total:&#34;</span>, <span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">sum</span>(dat[range,<span style="color:#a6e22e">c</span>(name)], na.rm<span style="color:#f92672">=</span>T))))
+</code></pre></div><pre><code>[1] &quot;--- 20x magnification ----&quot;
    L w n_w=5
 1  1 0   640
 2  2 1   320
@@ -428,14 +366,14 @@ range        <span style="color:#f92672">&lt;-</span> smallest_bin<span style="c
 </code></pre>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">smallest_bin <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">4</span>
 largest_bin  <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">8</span>
-name         <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,largest_bin, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)
+name         <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,largest_bin, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)
 range        <span style="color:#f92672">&lt;-</span> smallest_bin<span style="color:#f92672">:</span>(largest_bin<span style="color:#ae81ff">+1</span>)
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;--- 4x magnification ----&#34;</span>)
-<span style="color:#66d9ef">print</span>(dat[<span style="color:#66d9ef">range</span>,<span style="color:#66d9ef">c</span>(<span style="color:#e6db74">&#34;L&#34;</span>,<span style="color:#e6db74">&#34;w&#34;</span>,name)])
+<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;--- 4x magnification ----&#34;</span>)
+<span style="color:#a6e22e">print</span>(dat[range,<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;L&#34;</span>,<span style="color:#e6db74">&#34;w&#34;</span>,name)])
 
-<span style="color:#66d9ef">print</span>(<span style="color:#66d9ef">paste</span>(<span style="color:#e6db74">&#34;Total:&#34;</span>, <span style="color:#66d9ef">round</span>(<span style="color:#66d9ef">sum</span>(dat[<span style="color:#66d9ef">range</span>,<span style="color:#66d9ef">c</span>(name)], na.rm<span style="color:#f92672">=</span>T))))</code></pre></div>
-<pre><code>[1] &quot;--- 4x magnification ----&quot;
+<span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;Total:&#34;</span>, <span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">sum</span>(dat[range,<span style="color:#a6e22e">c</span>(name)], na.rm<span style="color:#f92672">=</span>T))))
+</code></pre></div><pre><code>[1] &quot;--- 4x magnification ----&quot;
     L w n_w=8
 4   8 3   640
 5  16 4   320
@@ -445,17 +383,11 @@ range        <span style="color:#f92672">&lt;-</span> smallest_bin<span style="c
 9 256 8    20
 [1] &quot;Total: 1260&quot;
 </code></pre>
-
 <h2 id="footnotes">Footnotes:</h2>
-
-<p><sup>[1]</sup> Here I use the arithmetic mean. Later, when computing the actual size spectra, you may want to use the geometric mean.</p>
-
+<p><!-- raw HTML omitted -->[1]<!-- raw HTML omitted --> Here I use the arithmetic mean. Later, when computing the actual size spectra, you may want to use the geometric mean.</p>
 <h2 id="references">References:</h2>
-
 <p>Blanco JM, F Echevarría, CM García (1994). Dealing with size-spectra: some conceptual and mathematical problems. Sci Mar 58:17-29</p>
-
 <p>Álvarez E, Á López-Urrutia, E Nogueira, S Fraga (2011). How to effectively sample the plankton size spectrum? A case study using FlowCAM. J Plankton Res 33(7):1119–1133, <a href="https://doi.org/10.1093/plankt/fbr012">https://doi.org/10.1093/plankt/fbr012</a></p>
-
 <p>Sprules W, LE Barth (2016). Surfing the biomass size spectrum: some remarks on history, theory, and application. Can J Fish Aquat Sci 73:477-495. <a href="https://doi.org/10.1139/cjfas-2015-0115">https://doi.org/10.1139/cjfas-2015-0115</a></p>
 
 
@@ -480,7 +412,7 @@ range        <span style="color:#f92672">&lt;-</span> smallest_bin<span style="c
 
 </main>
     <footer>
-        <h6>Copyright &copy; 2019 - Sari Giering | 
+        <h6>Copyright © 2019 - Sari Giering | 
             Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
             <a href="https://sarigiering.github.ioindex.xml">Subscribe</a></h6>
     </footer>
