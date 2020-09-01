@@ -135,7 +135,7 @@ if (!doNotTrack) {
 <li><em>L</em> = lower limit of size for each bin</li>
 <li><em>w</em> = log2 of lower size bin</li>
 <li>Δ<em>w</em> =  width of size bin (in μm)</li>
-<li>w̄ = mean of size bin<!-- raw HTML omitted -->[1]<!-- raw HTML omitted --></li>
+<li>w̄ = mean of size bin<sup>[1]</sup></li>
 </ul>
 <p>Now let&rsquo;s write this in R.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">dat   <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(<span style="color:#e6db74">&#34;L&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#a6e22e">^c</span>(<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">12</span>))
@@ -149,7 +149,7 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <tr>
 <th align="center">bin</th>
 <th align="center">minimum length (<em>L</em> in μm)</th>
-<th align="center">w (log<!-- raw HTML omitted -->2<!-- raw HTML omitted --> of <em>L</em>)</th>
+<th align="center">w (log<sub>2</sub> of <em>L</em>)</th>
 <th align="center">bin mean (w̄)</th>
 <th align="center">bin width (Δ<em>w</em>)</th>
 </tr>
@@ -264,11 +264,11 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 <p>We now want to calculate the number of particles in a certain size bin. So what we really need here is the &lsquo;number size spectrum&rsquo;, which is not normalized to the width of the size bin. To &lsquo;denormalize&rsquo;, we multiply by the bin width scaled to the mean bin size:</p>
 <p>log(<em>n</em>) = <em>a</em> + <em>b</em>*w̄ + Δ<em>w</em>*w̄</p>
 <p>log(<em>n</em>) = <em>a</em> + (_b_+Δ<em>w</em>)*w̄</p>
-<p>This equation is pretty cool as it shows how the slope of the normalized size spectra (<em>b<!-- raw HTML omitted -->norm<!-- raw HTML omitted --></em>) and &lsquo;standard&rsquo; size spectra (<em>b<!-- raw HTML omitted -->standard<!-- raw HTML omitted --></em>) relate to each other:</p>
-<p><em>b<!-- raw HTML omitted -->norm<!-- raw HTML omitted --></em> = <em>b</em></p>
-<p><em>b<!-- raw HTML omitted -->standard<!-- raw HTML omitted --></em> = (_b_+Δ<em>w</em>)</p>
+<p>This equation is pretty cool as it shows how the slope of the normalized size spectra (<em>b<sub>norm</sub></em>) and &lsquo;standard&rsquo; size spectra (<em>b<sub>standard</sub></em>) relate to each other:</p>
+<p><em>b<sub>norm</sub></em> = <em>b</em></p>
+<p><em>b<sub>standard</sub></em> = (_b_+Δ<em>w</em>)</p>
 <p>And as we have set up our Δ<em>w</em> to be 1, we get:</p>
-<p>(<em>b<!-- raw HTML omitted -->norm<!-- raw HTML omitted --></em>) = (<em>b<!-- raw HTML omitted -->standard<!-- raw HTML omitted --></em>)+1.</p>
+<p>(<em>b<sub>norm</sub></em>) = (<em>b<sub>standard</sub></em>)+1.</p>
 <p>Sweet!</p>
 <hr>
 <p>Now that we have that sorted, we can almost start calculating numbers. I use the slope of Blanco <em>et al</em>&lsquo;s (1994) normalized superspectrum and assume that a size bin is well represented if there are 20 particles in it.</p>
@@ -284,7 +284,7 @@ dat<span style="color:#f92672">$</span>w <span style="color:#f92672">&lt;-</span
 n <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">20</span>
 
 dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">log2</span>(n) <span style="color:#f92672">-</span> (b<span style="color:#f92672">+</span>dat<span style="color:#f92672">$</span>dw)<span style="color:#f92672">*</span>dat<span style="color:#f92672">$</span>w_avg
-</code></pre></div><p>Now that I know the intercept, I can compose a number size spectrum with varying population sizes. In the following table, you see a column for each of these spectra. For example, the column <em>n_w=0</em> shows a number size spectrum where the number of particles in the size bin starting at log<!-- raw HTML omitted -->2<!-- raw HTML omitted -->(<em>L</em>)=0 has 10 particles.</p>
+</code></pre></div><p>Now that I know the intercept, I can compose a number size spectrum with varying population sizes. In the following table, you see a column for each of these spectra. For example, the column <em>n_w=0</em> shows a number size spectrum where the number of particles in the size bin starting at log<sub>2</sub>(<em>L</em>)=0 has 10 particles.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#a6e22e">for</span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>(<span style="color:#a6e22e">nrow</span>(dat)<span style="color:#ae81ff">-1</span>)){
   dat[,<span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;n_w=&#34;</span>,dat<span style="color:#f92672">$</span>w[i],sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span><span style="color:#a6e22e">^</span>(dat[,<span style="color:#e6db74">&#34;a_when_n=10&#34;</span>][i]<span style="color:#f92672">+</span> dat<span style="color:#f92672">$</span>w_avg<span style="color:#f92672">*</span>b <span style="color:#f92672">+</span> dat<span style="color:#f92672">$</span>dw<span style="color:#f92672">*</span>dat<span style="color:#f92672">$</span>w_avg)
   }
@@ -384,7 +384,7 @@ range        <span style="color:#f92672">&lt;-</span> smallest_bin<span style="c
 [1] &quot;Total: 1260&quot;
 </code></pre>
 <h2 id="footnotes">Footnotes:</h2>
-<p><!-- raw HTML omitted -->[1]<!-- raw HTML omitted --> Here I use the arithmetic mean. Later, when computing the actual size spectra, you may want to use the geometric mean.</p>
+<p><sup>[1]</sup> Here I use the arithmetic mean. Later, when computing the actual size spectra, you may want to use the geometric mean.</p>
 <h2 id="references">References:</h2>
 <p>Blanco JM, F Echevarría, CM García (1994). Dealing with size-spectra: some conceptual and mathematical problems. Sci Mar 58:17-29</p>
 <p>Álvarez E, Á López-Urrutia, E Nogueira, S Fraga (2011). How to effectively sample the plankton size spectrum? A case study using FlowCAM. J Plankton Res 33(7):1119–1133, <a href="https://doi.org/10.1093/plankt/fbr012">https://doi.org/10.1093/plankt/fbr012</a></p>
