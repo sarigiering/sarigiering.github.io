@@ -148,9 +148,6 @@ It allows you to upload your images, carry out some automated presorting, and of
 <blockquote>
 <p>The big challenge is now to upload your data onto EcoTaxa!</p>
 </blockquote>
-<p>Luckily, I know just the right person to ask for help: Simon-Martin Schroeder, who has helped to implement the deep learning feature in EcoTaxa. More relevant, he developed
-<a class="link" href="https://morphocut.readthedocs.io/en/latest/index.html/" target="_blank">MorphoCut</a> - an image processing pipeline.</p>
-<p>Honestly, writing a MorphoCluster pipeline looks super complicated, but don&rsquo;t be put off by the code. I will point out the important steps.</p>
 <h2 id="sample-file-requirements-for-ecotaxa">Sample file requirements for EcoTaxa</h2>
 <p>The files and folder structure that FlowCam saves is very different to the one required by EcoTaxa.</p>
 <ul>
@@ -160,6 +157,9 @@ It allows you to upload your images, carry out some automated presorting, and of
 <p>EcoTaxa further asks for <strong>a specific table</strong> to upload the data. Besides informing about the metadata, this table includes the particle measurements. These measurements are critical as the semi-supervised classification algorithm uses these measurements for the classification predictions. Unfortunately, the measurements that FlowCam&rsquo;s VisualSpreadsheet provides are very different to those that EcoTaxa asks for.</p>
 <p>But worry not! We have a solution!</p>
 <p><img src="https://sarigiering.github.io/img/morphocut_logo.png" alt="MorphoCut logo"></p>
+<p>Luckily, I know just the right person to ask for help: Simon-Martin Schroeder, who has helped to implement the deep learning feature in EcoTaxa. More relevant, he developed
+<a class="link" href="https://morphocut.readthedocs.io/en/latest/index.html/" target="_blank">MorphoCut</a> - an image processing pipeline.</p>
+<p>Honestly, writing a MorphoCluster pipeline looks super complicated, but don&rsquo;t be put off by the code. I will point out the important steps.</p>
 <h1 id="the-morphocut-pipeline">The MorphoCut Pipeline</h1>
 <h3 id="vignette-extraction">Vignette extraction</h3>
 <p>In a <a class="link" href="https://sarigiering.github.io/posts/extract-individual-particle-images-from-flowcam">previous post</a>,
