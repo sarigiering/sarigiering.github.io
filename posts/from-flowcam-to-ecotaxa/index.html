@@ -1,0 +1,363 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Visible Ocean</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Sari Giering" />
+  <meta name="generator" content="Hugo 0.66.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://sarigiering.github.io/css/styles.css" />
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-146268173-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://sarigiering.github.io/">Visible Ocean</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a title="Twitter" href="https://twitter.com/sarigiering"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a title="GitHub" href="https://github.com/sarigiering"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+            
+        <li><a title="NOCS Website" href="https://noc.ac.uk/people/slcg" target="_blank"><i class="fa fa-university fa-lg" aria-hidden="true"></i></i></a></li>
+         
+        <li><a title="Google Scholar" href="https://scholar.google.com/citations?user=_4M69t8AAAAJ%26hl" target="_blank"><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i></i></a></li>
+        
+      </ul>
+      
+      <p><em>Ideas, codes and brainstorming for making sense of ocean data</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://sarigiering.github.io/">
+                <i class="fa-li fa  fa-lg"></i><span>Home</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://sarigiering.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://sarigiering.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>From FlowCam to EcoTaxa</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2020-12-04T19:15:08Z">Dec 4, 2020</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://sarigiering.github.io/tags/particles/">#particles</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/flowcam/">#FlowCam</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/vignette/">#vignette</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/extraction/">#extraction</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/ecotaxa/">#EcoTaxa</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/classification/">#classification</a>
+                
+            </em>
+        </li>
+        
+
+        <li>7 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>So, you have finished lab work and now have an amazing dataset of images taken by FlowCam. What should you do with the images now?</p>
+<p>There are typically two steps that you want to carry out now:</p>
+<ol>
+<li>Take particle measurements.</li>
+<li>Identify the individual particles.</li>
+</ol>
+<p>You can do the above in the software that comes shipped with the FlowCam: VisualSpreadsheet. It is a great software, but you may decide that you want more flexibility. For example, you might want to use a different particle detection routine to measure the particles, or you may want to use a different programme for the image classification.
+<figure>
+    <img src="https://sarigiering.github.io/img/FlowCam-to-EcoTaxa-2.jpg"
+         alt="Example of image sorting and classification using EcoTaxa"/> <figcaption>
+            <p>Example of image sorting and classification using EcoTaxa</p>
+        </figcaption>
+</figure>
+</p>
+<p>For semi-automated particle classification, I am a big fan of
+<a class="link" href="https://ecotaxa.obs-vlfr.fr/" target="_blank">EcoTaxa</a>.
+EcoTaxa is a web application developed and hosted at
+<a class="link" href="http://www.obs-vlfr.fr/" target="_blank">l&rsquo;Observatoire Océanologique de Villefranche-sur-Mer</a>.
+It allows you to upload your images, carry out some automated presorting, and offers a simple interface for sorting. Because of EcoTaxa&rsquo;s clear interface, the classification process is fast and intuitive. The web-based approach allows you to sort from anywhere (perfect in the new age of home office!), and you can easily share with collaborators and get their input on your suggested classification. Even better, EcoTaxa is community driven and they ever improving the algorithms.</p>
+<blockquote>
+<p>The big challenge is now to upload your data onto EcoTaxa!</p>
+</blockquote>
+<p>Luckily, I know just the right person to ask for help: Simon-Martin Schroeder, who has helped to implement the deep learning feature in EcoTaxa. More relevant, he developed
+<a class="link" href="https://morphocut.readthedocs.io/en/latest/index.html/" target="_blank">MorphoCut</a> - an image processing pipeline.</p>
+<p>Honestly, writing a MorphoCluster pipeline looks super complicated, but don&rsquo;t be put off by the code. I will point out the important steps.</p>
+<h2 id="sample-file-requirements-for-ecotaxa">Sample file requirements for EcoTaxa</h2>
+<p>The files and folder structure that FlowCam saves is very different to the one required by EcoTaxa.</p>
+<ul>
+<li><em>FlowCam</em>: The vignettes are typically saved as part of a collage.</li>
+<li><em>EcoTaxa</em>: All vignettes have to be saved as individual files.</li>
+</ul>
+<p>EcoTaxa further asks for <strong>a specific table</strong> to upload the data. Besides informing about the metadata, this table includes the particle measurements. These measurements are critical as the semi-supervised classification algorithm uses these measurements for the classification predictions. Unfortunately, the measurements that FlowCam&rsquo;s VisualSpreadsheet provides are very different to those that EcoTaxa asks for.</p>
+<p>But worry not! We have a solution!</p>
+<p><img src="https://sarigiering.github.io/img/morphocut_logo.png" alt="MorphoCut logo"></p>
+<h1 id="the-morphocut-pipeline">The MorphoCut Pipeline</h1>
+<h3 id="vignette-extraction">Vignette extraction</h3>
+<p>In a <a class="link" href="https://sarigiering.github.io/posts/extract-individual-particle-images-from-flowcam">previous post</a>,
+I shared code that allows you to extract the inividual vignettes for flexible post-processing. We have integrated this code into MorphoCluster to extract the vignettes and produce the table that is required to upload the images into EcoTaxa.</p>
+<h3 id="particle-measurements">Particle measurements</h3>
+<p>For the particle measurements, you have two options:</p>
+<ol>
+<li>Use the particles as detected by VisualSpreadsheet.</li>
+<li>Write your own particle detection routine.</li>
+</ol>
+<p>Option 1 is by far the easier option and will most likely be sufficient for your purposes. So, this option is the one I will explain here.</p>
+<p>Particle measurements include parameters such as particle area, length, height, perimeter, etc. To carry out such measurements, you first need to decide which pixel of an image belongs to the particle. There are several routines - some simple, some sophisticated - that make that decision for you. Each pixel of the image is then assigned as either as &lsquo;particle&rsquo; or &lsquo;background&rsquo;.</p>
+<table>
+<thead>
+<tr>
+<th align="center">System</th>
+<th align="center">Background</th>
+<th align="center">Particle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">logical</td>
+<td align="center">FALSE</td>
+<td align="center">TRUE</td>
+</tr>
+<tr>
+<td align="center">binary</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">mask</td>
+<td align="center">black</td>
+<td align="center">white</td>
+</tr>
+</tbody>
+</table>
+<p>This binary system makes it easy to produce a visual representation of what is considered particle: the &lsquo;mask&rsquo;.</p>
+<p>During your sample analysis, FlowCam automatically generated a mask for each of the particles and saved them as a collage of binary images (&ldquo;&lt;sample_name&gt;_??????_bin.tif&rdquo;). If you are happy with the original particle detection by FlowCam, we can simply use these binary vignettes to calculate our particle characteristics and generate the EcoTaxa table.</p>
+<figure>
+    <img src="https://sarigiering.github.io/img/particle_detection.jpg"
+         alt="Example of a FlowCam image (&amp;lsquo;vignette&amp;rsquo;) and corresponding mask"/> <figcaption>
+            <p>Example of a FlowCam image (&lsquo;vignette&rsquo;) and corresponding mask</p>
+        </figcaption>
+</figure>
+
+<h3 id="size-filter-awesome">Size filter (Awesome!)</h3>
+<p>If you are like me, you want to make sure you image all particles regardless of how small they are. While you may want to include these small particles when calculating size spectra, they have a downside: They are often so small that they are very difficult to identify, and there are lots of them! My most recent FlowCam dataset contained ~490,000 vignettes, most of which are small little blobs. I am interested in identifying only the largest images, like the image of <em>Fragilariopsis</em> above.</p>
+<p>The code below allows to only extract vignettes that fullfill a custom criterium. In my case, I chose to retain only particles that have a convex area with ≥1500 px. The extracted dataset contains only ~3000 particles.</p>
+<p>(In the code below, the size filter is commented out. You can change the threshold to match your purpose or use a different criterium.)</p>
+<h2 id="setup-your-directory-for-extraction">Setup your directory for extraction</h2>
+<p>I suggest, you set up the folder as described in my
+<a class="link" href="https://sarigiering.github.io/posts/extract-individual-particle-images-from-flowcam">previous post</a>.
+Copy all sample folders that you want to upload onto EcoTaxa in a folder; e.g. <code>~/&lt;Project_name&gt;/&lt;raw&gt;</code>. I named it &ldquo;raw&rdquo;, but you can name it anything you want.</p>
+<p>Copy-paste the code below into Python (e.g. Spyder). You should not have to change anything in the code, though you may have to install some of the packages. Simply run the entire code. When prompted select the <code>&lt;raw&gt;</code> folder.</p>
+<p>This is how your directory might look like before you run the code:</p>
+<pre><code>.
+...
+├── &lt;Project_name&gt;
+|   ├── &lt;raw&gt;
+|   |   ├── &lt;Sample_1&gt;
+|   |   |   ├── *.lst
+|   |   |   ├── *_000001.tif
+|   |   |   ...
+|   |   ├── &lt;Sample_2&gt;
+|   |   |   ├── *.lst
+|   |   |   ├── *_000001.tif
+|   |   |   ...
+...
+</code></pre><p>After extraction, you will find a new folder (&ldquo;morphocut&rdquo;) in your project folder containing a zipped subfolder with (1) the extracted vignettes and (2) the EcoTaxa table. You should be able to upload this folder straight to EcoTaxa.</p>
+<p>Note, in the current version of MorphoCut, all samples are extracted into one single folder. We hope to change this in future versions.</p>
+<pre><code>.
+...
+├── &lt;Project_name&gt;
+|   ├── &lt;raw&gt;
+|   └── morphocut
+|   |   ├── ecotaxa.zip
+|   |   |   ├── ecotaxa_export.tsv
+|   |   |   ├── *_1.jpg
+|   |   |   ├── *_2.jpg
+|   |   |   ...
+...
+</code></pre><h2 id="code">Code</h2>
+<p>The code is written in python and you currently need the developer version of MorphoCut.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># Python 3.7</span>
+pip install <span style="color:#f92672">-</span>U git<span style="color:#f92672">+</span>https:<span style="color:#f92672">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>morphocut<span style="color:#f92672">/</span>morphocut<span style="color:#f92672">.</span>git
+</code></pre></div><p>The principle behind the code is a bit complicated and it takes a moment to get your head around it. In simple terms, you write a &lsquo;list of actions&rsquo; that you want to carry out - it is like a generic instructions. Similar to general instructions for driving a car: [1] <em>open door</em>, [2] <em>sit down</em>, [3] <em>close door</em>, [4] <em>arrange mirrors</em>, [&hellip;]. When you run the code, the computer follows the instructions and applies them on each image/object. The code has the neat aspect that it immediately deletes the bits of data/image/etc that are not needed anymore. It basically tidies up and &lsquo;leaves the workbench clean&rsquo;, which makes the image processing much faster.</p>
+<p>For more details, check out the <a class="link" href="https://morphocut.readthedocs.io/en/latest/" target="_blank">MorphoCut user guide</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> os.path
+<span style="color:#f92672">import</span> tkinter <span style="color:#f92672">as</span> tk
+<span style="color:#f92672">from</span> tkinter <span style="color:#f92672">import</span> filedialog
+<span style="color:#f92672">from</span> morphocut.core <span style="color:#f92672">import</span> Pipeline
+<span style="color:#f92672">from</span> morphocut.file <span style="color:#f92672">import</span> Find
+<span style="color:#f92672">from</span> morphocut.integration.flowcam <span style="color:#f92672">import</span> FlowCamReader
+<span style="color:#f92672">from</span> morphocut.image <span style="color:#f92672">import</span> RGB2Gray, ImageProperties
+<span style="color:#f92672">from</span> morphocut.stream <span style="color:#f92672">import</span> Filter, TQDM
+<span style="color:#f92672">from</span> morphocut.str <span style="color:#f92672">import</span> Format
+<span style="color:#f92672">from</span> morphocut.contrib.ecotaxa <span style="color:#f92672">import</span> EcotaxaWriter
+<span style="color:#f92672">from</span> morphocut.contrib.zooprocess <span style="color:#f92672">import</span> CalculateZooProcessFeatures
+
+<span style="color:#75715e"># prompt for choosing folder</span>
+root <span style="color:#f92672">=</span> tk<span style="color:#f92672">.</span>Tk()
+root<span style="color:#f92672">.</span>attributes(<span style="color:#e6db74">&#39;-topmost&#39;</span>, <span style="color:#ae81ff">1</span>)
+root<span style="color:#f92672">.</span>withdraw()
+raw_folder_path <span style="color:#f92672">=</span> filedialog<span style="color:#f92672">.</span>askdirectory()
+root<span style="color:#f92672">.</span>update()
+os<span style="color:#f92672">.</span>chdir(raw_folder_path)
+
+<span style="color:#75715e"># make directory for extraction</span>
+output_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(raw_folder_path), <span style="color:#e6db74">&#34;morphocut&#34;</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(output_path): os<span style="color:#f92672">.</span>mkdir(output_path)
+
+<span style="color:#75715e"># print folder names</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Selected folder: &#34;</span> <span style="color:#f92672">+</span> raw_folder_path)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Files will be extracted to: &#34;</span> <span style="color:#f92672">+</span> output_path)
+
+<span style="color:#75715e"># MorphoCut pipeline</span>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+
+    <span style="color:#66d9ef">with</span> Pipeline() <span style="color:#66d9ef">as</span> p:
+        <span style="color:#75715e"># [Stream] Find .lst files in input path</span>
+        lst_fn <span style="color:#f92672">=</span> Find(raw_folder_path, [<span style="color:#e6db74">&#34;.lst&#34;</span>])
+
+        <span style="color:#75715e"># [Stream] Read objects from a .lst file</span>
+        obj <span style="color:#f92672">=</span> FlowCamReader(lst_fn)
+           
+        <span style="color:#75715e"># Extract object image and convert to gray level</span>
+        img <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>image
+        img_gray <span style="color:#f92672">=</span> RGB2Gray(img, True)
+        
+        <span style="color:#75715e"># Extract object mask</span>
+        mask <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>mask
+
+        <span style="color:#75715e"># Extract metadata from the FlowCam</span>
+        object_meta <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>data
+
+        <span style="color:#75715e"># Construct object ID</span>
+        object_id <span style="color:#f92672">=</span> Format(<span style="color:#e6db74">&#34;{lst_name}_{id}&#34;</span>, lst_name <span style="color:#f92672">=</span> obj<span style="color:#f92672">.</span>lst_name, _kwargs <span style="color:#f92672">=</span> object_meta)
+        object_meta[<span style="color:#e6db74">&#34;id&#34;</span>] <span style="color:#f92672">=</span> object_id
+
+        <span style="color:#75715e"># Calculate object properties (area, eccentricity, equivalent_diameter, mean_intensity, ...). See skimage.measure.regionprops.</span>
+        regionprops <span style="color:#f92672">=</span> ImageProperties(mask, img_gray)
+        
+        <span style="color:#75715e"># ---- Size filter ----</span>
+        <span style="color:#75715e"># [Stream] Only keep large images</span>
+        <span style="color:#75715e">#Filter(regionprops[&#39;convex_area&#39;]&gt;1499)</span>
+        
+        <span style="color:#75715e"># Append object properties to metadata in a ZooProcess-like format</span>
+        object_meta <span style="color:#f92672">=</span> CalculateZooProcessFeatures(regionprops, object_meta)
+               
+        <span style="color:#75715e"># [Stream] Here, three different versions are written. Remove what you do not need.</span>
+        EcotaxaWriter(
+            os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(output_path, <span style="color:#e6db74">&#34;EcoTaxa.zip&#34;</span>),
+            [
+                <span style="color:#75715e"># The original RGB image</span>
+                (Format(<span style="color:#e6db74">&#34;{object_id}.jpg&#34;</span>, object_id <span style="color:#f92672">=</span> object_id), img),
+            ],
+            object_meta <span style="color:#f92672">=</span> object_meta,
+        )
+
+        <span style="color:#75715e"># Progress bar</span>
+        TQDM(object_id)
+
+p<span style="color:#f92672">.</span>run()<span style="color:#75715e"># Requires MorphoCut developer version.</span>
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://sarigiering.github.io/posts/extract-individual-particle-images-from-flowcam/"><i class="fa fa-chevron-circle-left"></i> Extract individual particle images from FlowCam</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://sarigiering.github.io/posts/overview-of-marine-snow-catcher-deployments/">Overview of Marine Snow Catcher deployments <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2019 - Sari Giering | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://sarigiering.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://sarigiering.github.io/js/scripts.js"></script>
+</body>
+
+</html>

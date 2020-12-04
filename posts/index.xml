@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Visible Ocean</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
-    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Dec 2020 19:15:08 +0000</lastBuildDate>
     
 	<atom:link href="https://sarigiering.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,16 @@
       
       <guid>https://sarigiering.github.io/posts/overview-of-marine-snow-catcher-deployments/</guid>
       <description>Marine Snow Catcher deploymentsThis map shows all MSC deployments that I know of. To get deployment details, click on a cluster and marker, and information about the programme, cruise and contact person will pop up.</description>
+    </item>
+    
+    <item>
+      <title>From FlowCam to EcoTaxa</title>
+      <link>https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/</guid>
+      <description>So, you have finished lab work and now have an amazing dataset of images taken by FlowCam. What should you do with the images now?
+There are typically two steps that you want to carry out now:</description>
     </item>
     
     <item>

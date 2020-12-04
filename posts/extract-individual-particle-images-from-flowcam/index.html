@@ -144,7 +144,7 @@ if (!doNotTrack) {
 </ol>
 <p>The position of the vignette in the composite image is provided by
 <em>image_y</em> and <em>image_x</em>. The height and width of the vignette are provided as:
-<em>image_h</em> and <em>image_2</em>.</p>
+<em>image_h</em> and <em>image_w</em>.</p>
 <p>The code will fail if any of the collage images are missing.</p>
 <h2 id="set-up-your-directory-for-extraction">Set up your directory for extraction</h2>
 <p>Copy all sample folders that you want to have extracted in a folder; e.g. <code>~/&lt;Project_name&gt;/&lt;raw&gt;</code>. I named it &ldquo;raw&rdquo;, but you can name it anything you want.</p>
@@ -180,7 +180,7 @@ if (!doNotTrack) {
 |   |   |   ...
 ...
 </code></pre><h2 id="code">Code</h2>
-<p>Copy-paste the code below into your Python environment (e.g. Spyder). You should not have to change anything in the code, though you may have to install some of the packages. To extract your vignettes, simply select the entire code and run everything (Ctrl+A, Ctrl+Enter).</p>
+<p>Copy-paste the code below into Python (e.g. Spyder). You should not have to change anything in the code, though you may have to install some of the packages. To extract your vignettes, simply select the entire code and run everything (Ctrl+A, Ctrl+Enter).</p>
 <p>The code will extract all vignettes in your selected <code>&lt;raw&gt;</code> folder, even if they have previously been extracted. So, don&rsquo;t forget to remove the files that you don&rsquo;t want to extract again or choose a different <code>&lt;raw&gt;</code> folder.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># Python 3.7</span>
 <span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> os.path
@@ -266,7 +266,7 @@ extract_folder_path <span style="color:#f92672">=</span> os<span style="color:#f
         
         
         <li>
-            <a href="https://sarigiering.github.io/posts/overview-of-marine-snow-catcher-deployments/">Overview of Marine Snow Catcher deployments <i class="fa fa-chevron-circle-right"></i> </a>
+            <a href="https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/">From FlowCam to EcoTaxa <i class="fa fa-chevron-circle-right"></i> </a>
         </li>
         
     </ul>

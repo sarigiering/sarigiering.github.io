@@ -6,10 +6,64 @@
     <description>Recent content in Tags on Visible Ocean</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
-    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Dec 2020 19:15:08 +0000</lastBuildDate>
     
 	<atom:link href="https://sarigiering.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>classification</title>
+      <link>https://sarigiering.github.io/tags/classification/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/tags/classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EcoTaxa</title>
+      <link>https://sarigiering.github.io/tags/ecotaxa/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/tags/ecotaxa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>extraction</title>
+      <link>https://sarigiering.github.io/tags/extraction/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/tags/extraction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FlowCam</title>
+      <link>https://sarigiering.github.io/tags/flowcam/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/tags/flowcam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>particles</title>
+      <link>https://sarigiering.github.io/tags/particles/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/tags/particles/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vignette</title>
+      <link>https://sarigiering.github.io/tags/vignette/</link>
+      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
+      
+      <guid>https://sarigiering.github.io/tags/vignette/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Flux fitting</title>
@@ -35,42 +89,6 @@
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://sarigiering.github.io/tags/marine-snow-catcher/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>extraction</title>
-      <link>https://sarigiering.github.io/tags/extraction/</link>
-      <pubDate>Mon, 09 Sep 2019 11:20:08 -0230</pubDate>
-      
-      <guid>https://sarigiering.github.io/tags/extraction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>FlowCam</title>
-      <link>https://sarigiering.github.io/tags/flowcam/</link>
-      <pubDate>Mon, 09 Sep 2019 11:20:08 -0230</pubDate>
-      
-      <guid>https://sarigiering.github.io/tags/flowcam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>particles</title>
-      <link>https://sarigiering.github.io/tags/particles/</link>
-      <pubDate>Mon, 09 Sep 2019 11:20:08 -0230</pubDate>
-      
-      <guid>https://sarigiering.github.io/tags/particles/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vignette</title>
-      <link>https://sarigiering.github.io/tags/vignette/</link>
-      <pubDate>Mon, 09 Sep 2019 11:20:08 -0230</pubDate>
-      
-      <guid>https://sarigiering.github.io/tags/vignette/</guid>
       <description></description>
     </item>
     
