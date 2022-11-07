@@ -144,7 +144,7 @@ if (!doNotTrack) {
 <a class="link" href="https://ecotaxa.obs-vlfr.fr/" target="_blank">EcoTaxa</a>.
 EcoTaxa is a web application developed and hosted at
 <a class="link" href="http://www.obs-vlfr.fr/" target="_blank">l&rsquo;Observatoire Océanologique de Villefranche-sur-Mer</a>.
-It allows you to upload your images, carry out some automated presorting, and offers a simple interface for sorting. Because of EcoTaxa&rsquo;s clear interface, the classification process is fast and intuitive. The web-based approach allows you to sort from anywhere (perfect in the new age of home office!), and you can easily share with collaborators and get their input on your suggested classification. Even better, EcoTaxa is community driven and they ever improving the algorithms.</p>
+It allows you to upload your images, carry out some automated presorting, and offers a simple interface for sorting. Because of EcoTaxa&rsquo;s clear interface, the classification process is fast and intuitive. The web-based approach allows you to sort from anywhere (perfect in the new age of home office!), and you can easily share with collaborators and get their input on your suggested classification. Even better, EcoTaxa is community driven and they are ever improving the algorithms.</p>
 <blockquote>
 <p>The big challenge is now to upload your data onto EcoTaxa!</p>
 </blockquote>
@@ -311,7 +311,7 @@ output_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.
         <span style="color:#75715e"># Append object properties to metadata in a ZooProcess-like format</span>
         object_meta <span style="color:#f92672">=</span> CalculateZooProcessFeatures(regionprops, object_meta)
                
-        <span style="color:#75715e"># [Stream] Here, three different versions are written. Remove what you do not need.</span>
+        <span style="color:#75715e"># [Stream] Here, the images and EcoTaxa table are saved and zipped.</span>
         EcotaxaWriter(
             os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(output_path, <span style="color:#e6db74">&#34;EcoTaxa.zip&#34;</span>),
             [
@@ -339,7 +339,7 @@ p<span style="color:#f92672">.</span>run()<span style="color:#75715e"># Requires
         
         
         <li>
-            <a href="https://sarigiering.github.io/posts/overview-of-marine-snow-catcher-deployments/">Overview of Marine Snow Catcher deployments <i class="fa fa-chevron-circle-right"></i> </a>
+            <a href="https://sarigiering.github.io/posts/save-a-pile-of-images-for-exotaxa/">Save a pile of images for ExoTaxa <i class="fa fa-chevron-circle-right"></i> </a>
         </li>
         
     </ul>

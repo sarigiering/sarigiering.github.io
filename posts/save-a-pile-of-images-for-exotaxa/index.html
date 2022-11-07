@@ -1,0 +1,298 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title>Visible Ocean</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Sari Giering" />
+  <meta name="generator" content="Hugo 0.66.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="https://sarigiering.github.io/css/styles.css" />
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-146268173-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://sarigiering.github.io/">Visible Ocean</a>
+            </h1>
+
+      <ul id="social-media">
+        
+        <li><a title="Twitter" href="https://twitter.com/sarigiering"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+          
+        <li><a title="GitHub" href="https://github.com/sarigiering"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></li>
+            
+        <li><a title="NOCS Website" href="https://noc.ac.uk/people/slcg" target="_blank"><i class="fa fa-university fa-lg" aria-hidden="true"></i></i></a></li>
+         
+        <li><a title="Google Scholar" href="https://scholar.google.com/citations?user=_4M69t8AAAAJ%26hl" target="_blank"><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i></i></a></li>
+        
+      </ul>
+      
+      <p><em>Ideas, codes and brainstorming for making sense of ocean data</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://sarigiering.github.io/">
+                <i class="fa-li fa  fa-lg"></i><span>Home</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://sarigiering.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://sarigiering.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Save a pile of images for ExoTaxa</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2022-11-07T12:42:20Z">Nov 7, 2022</time>
+        </li>
+        
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://sarigiering.github.io/tags/particles/">#particles</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/vignette/">#vignette</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/morphocut/">#MorphoCut</a>
+                
+                    , 
+                    <a href="https://sarigiering.github.io/tags/ecotaxa/">#EcoTaxa</a>
+                
+            </em>
+        </li>
+        
+
+        <li>5 min read</li>
+    </ul>
+</aside>
+    
+
+    <p>We are trying a new workflow to extract particles from holographic images taken by the LISST-Holo and would like to import the images to <a class="link" href="https://ecotaxa.obs-vlfr.fr/" target="_blank">EcoTaxa</a> for manual classification. In a previous post, I already introduced <a href="https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/">EcoTaxa and MorphoCut</a>.</p>
+<p>The files and folder structure required by EcoTaxa are as follows:</p>
+<ul>
+<li><em>EcoTaxa table</em>: File names and particle details for every vignette.</li>
+<li><em>Vignettes/images</em>: All vignettes saved as individual files.</li>
+</ul>
+<p>All files are saved in a folder and zipped ready for uploading to EcoTaxa.</p>
+<p>I found the quickest way to do this is to modify the <a class="link" href="https://morphocut.readthedocs.io/en/latest/index.html/" target="_blank">MorphoCut</a> pipeline I used previously to <a href="https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/">extract and save the FlowCam images</a>. For particle measurements, I went very basic and simply applied a threshold value of 120. This value may not be appropriate for your images and you may want to modify this value (or implement a thresholding algorithm) particularly if you are planning to use EcoTaxa&rsquo;s pre-sorting features. For our case, it will do the job as we do not have many vignettes and are planning to sort them manually anyway.</p>
+<h2 id="code">Code</h2>
+<p>The code is written in python and you currently need the developer version of MorphoCut.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># Python 3.7</span>
+pip install <span style="color:#f92672">-</span>U git<span style="color:#f92672">+</span>https:<span style="color:#f92672">//</span>github<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>morphocut<span style="color:#f92672">/</span>morphocut<span style="color:#f92672">.</span>git
+</code></pre></div><p>The principle behind the code is a bit complicated and it takes a moment to get your head around it. In simple terms, you write a &lsquo;list of actions&rsquo; that you want to carry out - it is like a generic instructions. For more details, check out the <a class="link" href="https://morphocut.readthedocs.io/en/latest/" target="_blank">MorphoCut user guide</a>.</p>
+<p>For our purpose, simply copy-paste the code below into Python and run it. It will have installed a function that you can call. To &lsquo;ExoTaxa&rsquo; your files, type the following command into Python, and modify the latitude, longitude and dates as appropriate for your data. You will also need to specify the format of the source images (&lsquo;ext&rsquo;).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py">make_ecotaxa_folder( 
+			folder_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;COMICS_Event034&#34;</span>,
+			lat <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-52.69&#34;</span>,
+			lon <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-40.125&#34;</span>,
+			date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2017-11-16&#34;</span>,
+			ext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.bmp&#34;</span>)
+</code></pre></div><p>So, in this example, the zipped folder will be called <em>EcoTaxa_COMICS_Event034</em> (the prefix is added automatically). The metadata will be updated to include latitude, longitude and date of all images (in this case they will be 52.69 S, 40.125 W, and 16 Nov 2017). The source images are bitmaps (&quot;.bmp&rdquo;). The fixed metadata works for us as we are looking at vertical profiles. If I find some time in future, I might include an option for more dynamic metadata.</p>
+<p>The function will pop a window that will allow you to select the folder that contains the vignettes that you want to zip. It will then save the zipped folder in the parent directory, which you can directly upload to EcoTaxa. (Though remember, the metadata is limited!)</p>
+<figure>
+    <img src="https://sarigiering.github.io/img/2022_11_07_popup.png"
+         alt="Example of pop-up window to select source folder"/> <figcaption>
+            <p>Example of pop-up window to select source folder</p>
+        </figcaption>
+</figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># Note, this code requires the installation of MorhoCut developers version.</span>
+<span style="color:#75715e"># https://morphocut.readthedocs.io/en/stable/introduction.html</span>
+
+<span style="color:#75715e"># Python 3.7</span>
+<span style="color:#75715e"># pip install -U git+https://github.com/morphocut/morphocut.git</span>
+ 
+<span style="color:#75715e"># ---- Required packages ----</span>
+<span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> os.path
+<span style="color:#f92672">import</span> tkinter <span style="color:#f92672">as</span> tk
+<span style="color:#f92672">from</span> tkinter <span style="color:#f92672">import</span> filedialog
+<span style="color:#f92672">from</span> morphocut.core <span style="color:#f92672">import</span> Pipeline, Call
+<span style="color:#f92672">from</span> morphocut.file <span style="color:#f92672">import</span> Find, Glob
+<span style="color:#f92672">from</span> morphocut.image <span style="color:#f92672">import</span> ImageProperties, ImageReader
+<span style="color:#f92672">from</span> morphocut.stream <span style="color:#f92672">import</span> Progress
+<span style="color:#f92672">from</span> morphocut.str <span style="color:#f92672">import</span> Format
+<span style="color:#f92672">from</span> morphocut.contrib.ecotaxa <span style="color:#f92672">import</span> EcotaxaWriter
+<span style="color:#f92672">from</span> morphocut.contrib.zooprocess <span style="color:#f92672">import</span> CalculateZooProcessFeatures
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_ecotaxa_folder</span>(folder_name, lat <span style="color:#f92672">=</span> None, lon <span style="color:#f92672">=</span> None, date <span style="color:#f92672">=</span> None, ext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.png&#34;</span>):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Make ecotaxa table and pack table and all images into folder (zipped) for direct upload into Ecotaxa.
+</span><span style="color:#e6db74">    
+</span><span style="color:#e6db74">    Parameters
+</span><span style="color:#e6db74">    ----------
+</span><span style="color:#e6db74">    folder_name: str
+</span><span style="color:#e6db74">        Name to be used for output folder. E.g. &#34;EcoTaxa_Event1&#34;
+</span><span style="color:#e6db74">    lat: float
+</span><span style="color:#e6db74">        Latitude (with South being negative)
+</span><span style="color:#e6db74">    lon: float
+</span><span style="color:#e6db74">        Longitude (with West being negative)
+</span><span style="color:#e6db74">    date: str of format &#34;YYYY-MM-DD&#34;
+</span><span style="color:#e6db74">        Date of sampling
+</span><span style="color:#e6db74">    ext: str
+</span><span style="color:#e6db74">        Extension of images (e.g. &#34;.bmp&#34;, &#34;.png&#34;)
+</span><span style="color:#e6db74">    
+</span><span style="color:#e6db74">    Returns
+</span><span style="color:#e6db74">    --------
+</span><span style="color:#e6db74">    Folder
+</span><span style="color:#e6db74">        Saves EcoTaxa table and all images in zipped folder
+</span><span style="color:#e6db74">    
+</span><span style="color:#e6db74">    Note
+</span><span style="color:#e6db74">    -------
+</span><span style="color:#e6db74">    Masks for particles are produced using a threshold of 120. This fixed threshold may not be appropriate for your data.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    
+    <span style="color:#75715e"># prompt for choosing folder</span>
+    root <span style="color:#f92672">=</span> tk<span style="color:#f92672">.</span>Tk()
+    root<span style="color:#f92672">.</span>attributes(<span style="color:#e6db74">&#39;-topmost&#39;</span>, <span style="color:#ae81ff">1</span>)
+    root<span style="color:#f92672">.</span>withdraw()
+    raw_folder_path <span style="color:#f92672">=</span> filedialog<span style="color:#f92672">.</span>askdirectory()
+    root<span style="color:#f92672">.</span>update()
+    os<span style="color:#f92672">.</span>chdir(raw_folder_path)
+    
+    <span style="color:#75715e"># make directory for extraction</span>
+    output_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(raw_folder_path), <span style="color:#e6db74">&#34;morphocut&#34;</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(output_path): os<span style="color:#f92672">.</span>mkdir(output_path)
+    
+    <span style="color:#75715e"># print folder names</span>
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Selected folder: &#34;</span> <span style="color:#f92672">+</span> raw_folder_path)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Files will be extracted to: &#34;</span> <span style="color:#f92672">+</span> output_path)
+    
+    <span style="color:#75715e"># MorphoCut pipeline</span>
+    <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    
+        <span style="color:#66d9ef">with</span> Pipeline() <span style="color:#66d9ef">as</span> p:
+    
+            <span style="color:#75715e"># [Stream] Find path of .bmp files in input path</span>
+            fn <span style="color:#f92672">=</span> Find(raw_folder_path, [ext])
+    
+            <span style="color:#75715e"># --- metadata table ---</span>
+            <span style="color:#75715e"># Extract file path (Corresponds to `for path in glob(pattern):`)</span>
+            path <span style="color:#f92672">=</span> Glob(fn)
+            
+            <span style="color:#75715e"># Remove path and extension from the filename</span>
+            basename <span style="color:#f92672">=</span> Call(<span style="color:#66d9ef">lambda</span> x: os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>splitext(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>basename(x))[<span style="color:#ae81ff">0</span>], path)
+            
+            thisdict <span style="color:#f92672">=</span> {
+              <span style="color:#e6db74">&#34;id&#34;</span>: Format(<span style="color:#e6db74">&#34;{object_id}&#34;</span>, object_id <span style="color:#f92672">=</span> basename),
+              <span style="color:#e6db74">&#34;lat&#34;</span>: lat,
+              <span style="color:#e6db74">&#34;lon&#34;</span>: lon,
+              <span style="color:#e6db74">&#34;date&#34;</span>: date,
+            }
+    
+            <span style="color:#75715e"># --- image processing ---</span>
+            <span style="color:#75715e"># [Stream] Read and open image from path. Note, it&#39;s already black-and-white</span>
+            img <span style="color:#f92672">=</span> ImageReader(fn)
+                      
+            <span style="color:#75715e"># Make object mask</span>
+            mask <span style="color:#f92672">=</span> img <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">120</span>
+          
+            <span style="color:#75715e"># Calculate object properties (area, eccentricity, equivalent_diameter, mean_intensity, ...). See skimage.measure.regionprops.</span>
+            regionprops <span style="color:#f92672">=</span> ImageProperties(mask, img)           
+       
+            <span style="color:#75715e"># Append object properties to metadata in a ZooProcess-like format</span>
+            meta <span style="color:#f92672">=</span> CalculateZooProcessFeatures(regionprops, thisdict)
+            <span style="color:#75715e"># End of parallel execution</span>
+    
+            <span style="color:#75715e"># [Stream] Here, three different versions are written. Remove what you do not need.</span>
+            EcotaxaWriter(
+                os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(output_path, <span style="color:#e6db74">&#34;EcoTaxa_&#34;</span> <span style="color:#f92672">+</span> folder_name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.zip&#34;</span>),
+                [
+                    <span style="color:#75715e"># The original RGB image</span>
+                    (Format(<span style="color:#e6db74">&#34;{object_id}.jpg&#34;</span>, object_id <span style="color:#f92672">=</span> basename), img),
+                ],
+                object_meta <span style="color:#f92672">=</span> meta,
+            )
+    
+            <span style="color:#75715e"># Progress bar</span>
+            Progress(fn)
+    
+    p<span style="color:#f92672">.</span>run()<span style="color:#75715e"># Requires MorphoCut developer version.</span>
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/"><i class="fa fa-chevron-circle-left"></i> From FlowCam to EcoTaxa</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://sarigiering.github.io/posts/overview-of-marine-snow-catcher-deployments/">Overview of Marine Snow Catcher deployments <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright © 2019 - Sari Giering | 
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://sarigiering.github.ioindex.xml">Subscribe</a></h6>
+    </footer>
+</div>
+<script src="https://sarigiering.github.io/js/scripts.js"></script>
+</body>
+
+</html>

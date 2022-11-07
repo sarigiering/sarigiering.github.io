@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>EcoTaxa on Visible Ocean</title>
-    <link>https://sarigiering.github.io/tags/ecotaxa/</link>
-    <description>Recent content in EcoTaxa on Visible Ocean</description>
+    <title>MorphoCut on Visible Ocean</title>
+    <link>https://sarigiering.github.io/tags/morphocut/</link>
+    <description>Recent content in MorphoCut on Visible Ocean</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2019 - Sari Giering</copyright>
     <lastBuildDate>Mon, 07 Nov 2022 12:42:20 +0000</lastBuildDate>
     
-	<atom:link href="https://sarigiering.github.io/tags/ecotaxa/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sarigiering.github.io/tags/morphocut/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,16 +18,6 @@
       
       <guid>https://sarigiering.github.io/posts/save-a-pile-of-images-for-exotaxa/</guid>
       <description>We are trying a new workflow to extract particles from holographic images taken by the LISST-Holo and would like to import the images to EcoTaxa for manual classification. In a previous post, I already introduced EcoTaxa and MorphoCut.</description>
-    </item>
-    
-    <item>
-      <title>From FlowCam to EcoTaxa</title>
-      <link>https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/</link>
-      <pubDate>Fri, 04 Dec 2020 19:15:08 +0000</pubDate>
-      
-      <guid>https://sarigiering.github.io/posts/from-flowcam-to-ecotaxa/</guid>
-      <description>So, you have finished lab work and now have an amazing dataset of images taken by FlowCam. What should you do with the images now?
-There are typically two steps that you want to carry out now:</description>
     </item>
     
   </channel>
